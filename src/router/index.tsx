@@ -1,20 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { Header } from '../components/Header';
-
-import { About } from '../views/About';
-import { Home } from '../views/Home';
-import { Topics } from '../views/Topics';
+import Home from '../pages/Home';
+import Login from '../pages/Login';
 
 const TheRouter: React.FC = () => (
   <Router>
     <div>
-      <Header />
-
       <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
+      <Route path="/login" component={Login} />
     </div>
   </Router>
 );
