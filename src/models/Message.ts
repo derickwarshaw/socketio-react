@@ -1,6 +1,12 @@
-import { User } from 'models/User';
+import { User } from "models/User";
+
+export enum MessageType {
+  user,
+  system,
+}
 
 interface IMessage {
+  type: MessageType;
   body: string;
 }
 
@@ -13,7 +19,15 @@ interface IUserMessage extends IMessage {
  * Requered properties: user (IUser), body (string).
  */
 export class UserMessage implements IUserMessage {
-  constructor(public user: User, public body: string) {}
+  public type: MessageType;
+  public user: User;
+  public body: string;
+
+  constructor(messageData: IUserMessage) {
+    this.type = messageData.type;
+    this.user = messageData.user;
+    this.body = messageData.body;
+  }
 }
 
 /**
@@ -21,5 +35,15 @@ export class UserMessage implements IUserMessage {
  * Requered properties: body (string).
  */
 export class SystemMessage implements IMessage {
-  constructor(public body: string) {}
+  public type: MessageType;
+  public body: string;
+
+  constructor(messageData: IMessage) {
+    this.type = messageData.type;
+    this.body = messageData.body;
+  }
+}
+
+export class MessageFactory {
+  constructor() {}
 }

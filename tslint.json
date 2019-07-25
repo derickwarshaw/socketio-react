@@ -1,14 +1,12 @@
 {
   "extends": [
     "tslint:recommended",
-    "tslint-plugin-prettier",
-    "tslint-config-prettier",
     "tslint-react-hooks"
   ],
   "rules": {
     "max-line-length": {
       "options": [
-        120
+        80
       ]
     },
     "new-parens": true,
@@ -29,7 +27,8 @@
     },
     "max-classes-per-file": false,
     "prettier": true,
-    "react-hooks-nesting": "error"
+    "react-hooks-nesting": "error",
+    "object-literal-sort-keys": false
   },
   "jsRules": {
     "max-line-length": {
