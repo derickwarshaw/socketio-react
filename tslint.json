@@ -27,6 +27,7 @@
         "trace"
       ]
     },
+    "max-classes-per-file": false,
     "prettier": true,
     "react-hooks-nesting": "error"
   },

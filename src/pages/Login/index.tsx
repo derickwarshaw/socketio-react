@@ -1,17 +1,39 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { simpleAction } from '../../state/actions/simpleAction';
+import React, { FormEvent, useState } from 'react';
+import { UserValidator } from '../../utils/validators';
 
 const Login: React.FC = () => {
-  // const dispatch = useDispatch();
+  const [login, setLogin] = useState('');
 
-  // const result = useSelector((state: IStore) => state);
+  /**
+   * Validate and submit user data.
+   * Throw error if data is incorrect.
+   * @param {FormEvent} e Form submit event.
+   */
+  const submitUser = (e: FormEvent): void => {
+    e.preventDefault();
 
-  // const handleButtonClick = () => {
-  //   dispatch(simpleAction());
-  // };
+    const validator = UserValidator.getInstance();
+    const isvalidLogin = validator.isvalidLogin(login);
+    // const isvalidPassword = validator.isvalidPassword(password);
 
-  return <div className="Login">Login Screen</div>;
+    if (!isvalidLogin) {
+      throw Error('[SUBMITING USER] Incorrect user information');
+      return;
+    }
+
+    console.log('Submit user');
+  };
+
+  return (
+    <div className="Login">
+      <h2>Tell your name</h2>
+
+      <form onSubmit={submitUser} className="Login__field">
+        <input type="text" value={login} onChange={e => setLogin(e.target.value)} />
+        <button type="button">Sign In</button>
+      </form>
+    </div>
+  );
 };
 
 export default Login;
