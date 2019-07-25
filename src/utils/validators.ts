@@ -1,4 +1,7 @@
 export class UserValidator {
+  /**
+   * Create new instance of UserValidator or return created one.
+   */
   public static getInstance() {
     if (!UserValidator.instance) {
       UserValidator.instance = new UserValidator();

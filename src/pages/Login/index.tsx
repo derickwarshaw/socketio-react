@@ -17,6 +17,7 @@ const Login: React.FC = () => {
     // const isvalidPassword = validator.isvalidPassword(password);
 
     if (!isvalidLogin) {
+      // rewrite for user feedback
       throw Error('[SUBMITING USER] Incorrect user information');
       return;
     }
