@@ -1,5 +1,5 @@
-import { User } from "models/User";
-import { MessageActionTypes } from "../types";
+import { User } from 'models/User';
+import { MessageActionTypes } from '../types';
 
 interface IReduxState {
   messages: [];

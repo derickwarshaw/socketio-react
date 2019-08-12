@@ -28,7 +28,8 @@
     "max-classes-per-file": false,
     "prettier": true,
     "react-hooks-nesting": "error",
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "quotemark": [true, "single"]
   },
   "jsRules": {
     "max-line-length": {

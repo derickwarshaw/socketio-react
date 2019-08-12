@@ -7,8 +7,8 @@ import Login from '../pages/Login';
 const TheRouter: React.FC = () => (
   <Router>
     <div>
-      <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
+      <Route exact path='/' component={Home} />
+      <Route path='/login' component={Login} />
     </div>
   </Router>
 );
