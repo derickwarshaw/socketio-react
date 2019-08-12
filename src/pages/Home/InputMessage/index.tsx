@@ -13,6 +13,7 @@ const InputMessage: React.FC = () => {
     }
 
     // dispatch()
+    setMessage("");
   };
 
   return (

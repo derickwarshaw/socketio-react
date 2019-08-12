@@ -16,7 +16,7 @@ interface IUserMessage extends IMessage {
 
 /**
  * User Message model. Defined messages from/to user.
- * Requered properties: user (IUser), body (string).
+ * Requered properties: user (IUser), body (string), type (MessageType).
  */
 export class UserMessage implements IUserMessage {
   public type: MessageType;
@@ -32,7 +32,7 @@ export class UserMessage implements IUserMessage {
 
 /**
  * System Message model. Defined messages about connection/disconnection/etc.
- * Requered properties: body (string).
+ * Requered properties: body (string), type (MessageType).
  */
 export class SystemMessage implements IMessage {
   public type: MessageType;
@@ -42,8 +42,4 @@ export class SystemMessage implements IMessage {
     this.type = messageData.type;
     this.body = messageData.body;
   }
-}
-
-export class MessageFactory {
-  constructor() {}
 }

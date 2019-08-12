@@ -1,8 +1,8 @@
-import React, { FormEvent, useState } from 'react';
-import { UserValidator } from '../../utils/validators';
+import React, { FormEvent, useState } from "react";
+import { UserValidator } from "../../utils/validators";
 
 const Login: React.FC = () => {
-  const [login, setLogin] = useState('');
+  const [login, setLogin] = useState("");
 
   /**
    * Validate and submit user data.
@@ -14,15 +14,15 @@ const Login: React.FC = () => {
 
     const validator = UserValidator.getInstance();
     const isvalidLogin = validator.isvalidLogin(login);
-    // const isvalidPassword = validator.isvalidPassword(password);
 
     if (!isvalidLogin) {
       // rewrite for user feedback
-      throw Error('[SUBMITING USER] Incorrect user information');
+      throw Error("[SUBMITING USER] Incorrect user information");
       return;
     }
 
-    console.log('Submit user');
+    // console.log("Submit user");
+    setLogin("");
   };
 
   return (
@@ -30,8 +30,12 @@ const Login: React.FC = () => {
       <h2>Tell your name</h2>
 
       <form onSubmit={submitUser} className="Login__field">
-        <input type="text" value={login} onChange={e => setLogin(e.target.value)} />
-        <button type="button">Sign In</button>
+        <input
+          type="text"
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
+        />
+        <button type="submit">Sign In</button>
       </form>
     </div>
   );

@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { UserMessage } from '../../../models/Message';
+import React, { ReactNode } from "react";
+import { UserMessage } from "../../../models/Message";
 
 interface IProps {
   children?: ReactNode;
