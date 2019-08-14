@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { UserMessage } from "../../../models/Message";
+import React, { ReactNode } from 'react';
+import { UserMessage } from '../../../models/Message';
 
 interface IProps {
   children?: ReactNode;
@@ -8,9 +8,9 @@ interface IProps {
 
 const Home: React.FC<IProps> = ({ message }) => {
   return (
-    <div className="Message">
-      <span className="Message__user">{message.user}:</span>
-      <span className="Message__body">{message.body}</span>
+    <div className='Message'>
+      <span className='Message__user'>{message.user.login}:</span>
+      <span className='Message__body'>{message.body}</span>
     </div>
   );
 };

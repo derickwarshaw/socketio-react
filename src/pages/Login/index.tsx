@@ -1,10 +1,11 @@
 import React, { FormEvent, useState } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import { UserValidator } from '../../utils/validators';
 import StateSocketService from 'services/StateSocketSergice';
 import { User } from 'models/User';
 
-const Login: React.FC = () => {
+const Login: React.FC<RouteComponentProps> = ({ history }) => {
   // TODO: Init only when mount component
   const stateSocketService = StateSocketService.getInstance();
   const [login, setLogin] = useState('');
@@ -30,6 +31,8 @@ const Login: React.FC = () => {
 
     stateSocketService.createUser(user);
     setLogin('');
+
+    history.push('/');
   };
 
   return (
@@ -48,4 +51,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

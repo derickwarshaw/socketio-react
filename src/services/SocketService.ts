@@ -79,6 +79,14 @@ export default class SocketService {
     this.socket.on(ESocketEvent.CHAT_MESSAGE, callback);
   }
 
+  public sendUserMessage(msg: UserMessage): void {
+    if (!this.socket) {
+      throw new Error('[SOCKET MANAGER]: Trying to send message. Socket is not created.');
+    }
+
+    this.socket.emit(ESocketEvent.CHAT_MESSAGE, msg);
+  }
+
   /**
    * Create socket connection.
    */

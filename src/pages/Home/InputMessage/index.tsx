@@ -1,9 +1,14 @@
 import React, { FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import StateSocketSergice from 'services/StateSocketSergice';
+import { UserMessage, MessageType } from 'models/Message';
 
 const InputMessage: React.FC = () => {
+  const [stateSocketService, _] = useState(StateSocketSergice.getInstance());
+  // TODO: add types for reducers
+  const { user } = useSelector((state: any) => state.userReducer);
   const [message, setMessage] = useState('');
-  const dispatch = useDispatch();
 
   const handleSendMessage = (e: FormEvent) => {
     e.preventDefault();
@@ -12,7 +17,12 @@ const InputMessage: React.FC = () => {
       return;
     }
 
-    // dispatch()
+    const msg = new UserMessage({
+      type: MessageType.user,
+      body: message,
+      user,
+    });
+    stateSocketService.sendUserMessage(msg);
     setMessage('');
   };
 

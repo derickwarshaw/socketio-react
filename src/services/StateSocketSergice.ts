@@ -53,4 +53,8 @@ export default class StateSocketService {
       this.dispatch(emitUserMessage(msg));
     });
   }
+
+  public sendUserMessage(msg: UserMessage): void {
+    this.socketmanager.sendUserMessage(msg);
+  }
 }
