@@ -63,6 +63,10 @@ export default class SocketService {
     this.fullURL = `${this.protocol}//${this.hostname}:${this.port}`;
   }
 
+  /**
+   * Send user to socket.
+   * @param {User} user Created and logged user.
+   */
   public connectUser(user: User): void {
     if (!this.socket) {
       throw new Error('[SOCKET MANAGER]: Trying to emit user. Socket is not created.');
@@ -71,6 +75,10 @@ export default class SocketService {
     this.socket.emit(ESocketEvent.NEW_USER, user);
   }
 
+  /**
+   * Submit on CHAT_MESSAGE socket event.
+   * @param {Function} callback Callback that triggers when recieve message.
+   */
   public submitOnMessages(callback: (msg: UserMessage) => void): void {
     if (!this.socket) {
       throw new Error('[SOCKET MANAGER]: Trying to submit on messages. Socket is not created.');
@@ -79,6 +87,10 @@ export default class SocketService {
     this.socket.on(ESocketEvent.CHAT_MESSAGE, callback);
   }
 
+  /**
+   * Send user message to socket.
+   * @param {UserMessage} msg User message.
+   */
   public sendUserMessage(msg: UserMessage): void {
     if (!this.socket) {
       throw new Error('[SOCKET MANAGER]: Trying to send message. Socket is not created.');

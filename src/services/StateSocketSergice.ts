@@ -48,12 +48,19 @@ export default class StateSocketService {
     this.dispatch(createUser(user));
   }
 
+  /**
+   * Dispatch action when message recieved from socket.
+   */
   public listenChatMessage(): void {
     this.socketmanager.submitOnMessages((msg: UserMessage) => {
       this.dispatch(emitUserMessage(msg));
     });
   }
 
+  /**
+   * Send user message to socket.
+   * @param {UserMessage} msg User message.
+   */
   public sendUserMessage(msg: UserMessage): void {
     this.socketmanager.sendUserMessage(msg);
   }
