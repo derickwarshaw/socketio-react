@@ -14,7 +14,7 @@ export default class SocketService {
    * Getting instance of SocketService.
    * @param {ISocketOpts} socketOpts Socket connect options.
    */
-  public static getInstance(socketOpts?: ISocketOpts) {
+  public static getInstance(socketOpts?: ISocketOpts): SocketService {
     if (!SocketService.instance) {
       SocketService.instance = new SocketService(socketOpts);
     }
@@ -54,5 +54,12 @@ export default class SocketService {
 
     const fullURL = `${this.protocol}//${this.hostname}:${this.port}`;
     this.socket = socketIOClient(fullURL);
+  }
+
+  /**
+   * Close socket connection.
+   */
+  public disconnect(): void {
+    this.socket.close();
   }
 }

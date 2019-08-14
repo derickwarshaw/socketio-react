@@ -1,12 +1,11 @@
 import React, { FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { UserValidator } from '../../utils/validators';
-import { createUser } from 'state/user/actions';
+import StateSocketService from 'services/StateSocketSergice';
 import { User } from 'models/User';
 
 const Login: React.FC = () => {
-  const dispatch = useDispatch();
+  const stateSocketService = StateSocketService.getInstance();
   const [login, setLogin] = useState('');
 
   /**
@@ -28,7 +27,7 @@ const Login: React.FC = () => {
 
     const user = new User(login);
 
-    dispatch(createUser(user));
+    stateSocketService.createUser(user);
     setLogin('');
   };
 
