@@ -3,8 +3,10 @@ import { Dispatch, AnyAction } from 'redux';
 import { configuredStore } from 'state/store';
 import SocketService from 'services/SocketService';
 import { createUser } from 'state/user/actions';
+import { emitUserMessage } from 'state/messages/actions';
 
 import { User } from 'models/User';
+import { UserMessage } from 'models/Message';
 
 /**
  * Layer between sockets and store for manage same data.
@@ -44,5 +46,11 @@ export default class StateSocketService {
     this.socketmanager.connectUser(user);
     // Dispatch event for store
     this.dispatch(createUser(user));
+  }
+
+  public listenChatMessage(): void {
+    this.socketmanager.submitOnMessages((msg: UserMessage) => {
+      this.dispatch(emitUserMessage(msg));
+    });
   }
 }

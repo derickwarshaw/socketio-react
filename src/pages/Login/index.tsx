@@ -5,6 +5,7 @@ import StateSocketService from 'services/StateSocketSergice';
 import { User } from 'models/User';
 
 const Login: React.FC = () => {
+  // TODO: Init only when mount component
   const stateSocketService = StateSocketService.getInstance();
   const [login, setLogin] = useState('');
 

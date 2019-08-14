@@ -1,8 +1,10 @@
 import socketIOClient from 'socket.io-client';
 import { User } from 'models/User';
+import { UserMessage } from 'models/Message';
 
 enum ESocketEvent {
   NEW_USER = 'NEW_USER',
+  CHAT_MESSAGE = 'CHAT_MESSAGE',
 }
 
 interface ISocketOpts {
@@ -61,12 +63,20 @@ export default class SocketService {
     this.fullURL = `${this.protocol}//${this.hostname}:${this.port}`;
   }
 
-  public connectUser(user: User) {
+  public connectUser(user: User): void {
     if (!this.socket) {
       throw new Error('[SOCKET MANAGER]: Trying to emit user. Socket is not created.');
     }
 
     this.socket.emit(ESocketEvent.NEW_USER, user);
+  }
+
+  public submitOnMessages(callback: (msg: UserMessage) => void): void {
+    if (!this.socket) {
+      throw new Error('[SOCKET MANAGER]: Trying to submit on messages. Socket is not created.');
+    }
+
+    this.socket.on(ESocketEvent.CHAT_MESSAGE, callback);
   }
 
   /**

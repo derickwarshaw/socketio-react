@@ -1,14 +1,19 @@
-import { User } from 'models/User';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import InputMessage from './InputMessage';
 import Message from './Message';
 
-import SocketService from 'services/SocketService';
+import StateSocketSergice from 'services/StateSocketSergice';
 
 
 const Home: React.FC = () => {
-  const socketService = SocketService.getInstance();
+  // TODO: Init only when mount component
+  const stateSocketService = StateSocketSergice.getInstance();
+  stateSocketService.listenChatMessage();
+
+  const { userMSGs } = useSelector((state: any) => state.messageReducer);
+  console.log('User Messages: ', userMSGs);
 
   return (
     <section className='Home'>
