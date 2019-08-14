@@ -29,7 +29,8 @@
     "prettier": true,
     "react-hooks-nesting": "error",
     "object-literal-sort-keys": false,
-    "quotemark": [true, "single"]
+    "quotemark": [true, "single"],
+    "ordered-imports": false
   },
   "jsRules": {
     "max-line-length": {

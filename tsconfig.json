@@ -22,7 +22,8 @@
     "paths": {
       "models": ["models/*"],
       "utils": ["utils/*"],
-      "pages": ["pages/*"]
+      "pages": ["pages/*"],
+      "services": ["services/*"]
     }
   },
   "include": [

@@ -1,7 +1,12 @@
 import React, { FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { UserValidator } from '../../utils/validators';
+import { createUser } from 'state/user/actions';
+import { User } from 'models/User';
 
 const Login: React.FC = () => {
+  const dispatch = useDispatch();
   const [login, setLogin] = useState('');
 
   /**
@@ -21,7 +26,9 @@ const Login: React.FC = () => {
       return;
     }
 
-    // console.log("Submit user");
+    const user = new User(login);
+
+    dispatch(createUser(user));
     setLogin('');
   };
 

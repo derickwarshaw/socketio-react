@@ -17,15 +17,16 @@ const InputMessage: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSendMessage} className='InputMessage__message-input'>
+    <form onSubmit={handleSendMessage} className='InputMessage'>
       <input
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         type='text'
         placeholder='Input your message'
+        className='InputMessage__input'
       />
 
-      <button type='submit'>Send</button>
+      <button className='InputMessage__button' type='submit'>Send</button>
     </form>
   );
 };

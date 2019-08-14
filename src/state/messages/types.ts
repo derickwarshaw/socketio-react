@@ -1,6 +1,0 @@
-export enum MessageActionTypes {
-  SEND_MESSAGE_RESPONSE,
-  MESSAGE_SENT,
-  SEND_MESSAGE_REQUEST,
-  USER_CHANGED,
-}
