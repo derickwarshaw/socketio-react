@@ -30,7 +30,9 @@ export default class StateSocketService {
   private dispatch: Dispatch<AnyAction> = configuredStore.dispatch;
 
   // Can't access to constructor. Required by singleton pattern.
-  private constructor() {}
+  private constructor() {
+    this.socketmanager.connect();
+  }
 
   /**
    * Emit socket message with type 'new user'.
@@ -39,7 +41,7 @@ export default class StateSocketService {
    */
   public createUser(user: User): void {
     // Emit socket message
-
+    this.socketmanager.connectUser(user);
     // Dispatch event for store
     this.dispatch(createUser(user));
   }

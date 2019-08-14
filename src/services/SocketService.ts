@@ -1,4 +1,9 @@
 import socketIOClient from 'socket.io-client';
+import { User } from 'models/User';
+
+enum ESocketEvent {
+  NEW_USER = 'NEW_USER',
+}
 
 interface ISocketOpts {
   protocol?: string;
@@ -33,9 +38,10 @@ export default class SocketService {
   private protocol = window.location.protocol;
   private hostname = window.location.hostname;
   private port = '3300';
+  private fullURL = `${this.protocol}//${this.hostname}:${this.port}`;
 
   // Socket manager
-  private socket: SocketIOClient.Socket;
+  private socket: SocketIOClient.Socket | null = null;
 
   // Can't access to constructor. Required by singleton pattern.
   // Create socket connection with optional options.
@@ -52,14 +58,32 @@ export default class SocketService {
       this.port = socketOpts.port;
     }
 
-    const fullURL = `${this.protocol}//${this.hostname}:${this.port}`;
-    this.socket = socketIOClient(fullURL);
+    this.fullURL = `${this.protocol}//${this.hostname}:${this.port}`;
+  }
+
+  public connectUser(user: User) {
+    if (!this.socket) {
+      throw new Error('[SOCKET MANAGER]: Trying to emit user. Socket is not created.');
+    }
+
+    this.socket.emit(ESocketEvent.NEW_USER, user);
+  }
+
+  /**
+   * Create socket connection.
+   */
+  public connect(): void {
+    this.socket = socketIOClient(this.fullURL);
   }
 
   /**
    * Close socket connection.
    */
   public disconnect(): void {
+    if (!this.socket) {
+      throw new Error('[SOCKET MANAGER]: Trying to disconnect. Socket is not created.');
+    }
+
     this.socket.close();
   }
 }
