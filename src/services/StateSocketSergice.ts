@@ -7,12 +7,11 @@ import { createUser } from 'state/user/actions';
 import { User } from 'models/User';
 
 /**
- * Singleton service for managing socket connection.
+ * Layer between sockets and store for manage same data.
  */
 export default class StateSocketService {
   /**
    * Getting instance of StateSocketService.
-   * @param {ISocketOpts} socketOpts Socket connect options.
    */
   public static getInstance(): StateSocketService {
     if (!StateSocketService.instance) {
