@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
+import './Home.scss';
+
 import InputMessage from './InputMessage';
 import Message from './Message';
 
@@ -17,13 +19,21 @@ const Home: React.FC = () => {
 
   return (
     <section className='Home'>
-      <div className='Home__message-list'>
-        { userMSGs.map((msg: any, index: number) => (
-          <Message key={`UserMessage-${index}`} message={msg} />
-        ))}
-      </div>
+      <div className='Home__inner'>
+        <div className='Home__message-list'>
+          <div className='Home__message-inner'>
+            { userMSGs.map((msg: any, index: number) => (
+              <div key={`UserMessage-${index}`} className='Home__message-wrapper'>
+                <Message message={msg} />
+              </div>
+            ))}
+          </div>
+        </div>
 
-      <InputMessage />
+        <div className='Home__input-message'>
+          <InputMessage />
+        </div>
+      </div>
     </section>
   );
 };

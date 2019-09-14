@@ -1,0 +1,42 @@
+@import '../../styles/vars';
+
+.Home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+
+  &__inner {
+    width: 320px;
+    height: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: $grey;
+    box-shadow: 0px 4px 20px rgba(35, 33, 61, 0.05);
+  }
+
+
+  &__message-list {
+    flex-grow: 1;
+    max-height: calc(100vh - 400px);
+    padding-bottom: 32px;
+    overflow-y: scroll;
+  }
+
+
+  &__message-wrapper {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+
+  &__input-message {
+    border-top: 1px solid $primary;
+    background-color: $white;
+    margin: 0 -16px -16px -16px;
+    padding: 16px;
+  }
+}

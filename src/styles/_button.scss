@@ -1,0 +1,22 @@
+.btn {
+  padding: 4px 16px;
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: 14px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+
+  &--primary {
+    background-color: $primary;
+    border-color: $primary;
+    color: $white;
+
+    &:hover {
+      background-color: $white;
+      color: $primary;
+    }
+  }
+}

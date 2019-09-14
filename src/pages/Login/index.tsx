@@ -1,13 +1,14 @@
 import React, { FormEvent, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
+import './Login.scss';
+
 import { UserValidator } from '../../utils/validators';
 import StateSocketService from 'services/StateSocketSergice';
 import { User } from 'models/User';
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
-  // TODO: Init only when mount component
-  const stateSocketService = StateSocketService.getInstance();
+  const [stateSocketService, _] = useState(StateSocketService.getInstance());
   const [login, setLogin] = useState('');
 
   /**
@@ -36,18 +37,27 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
   };
 
   return (
-    <div className='Login'>
-      <h2>Tell your name</h2>
+    <section className='Login'>
+      <div className='Login__inner'>
+        <h2 className='Login__heading'>Tell your name</h2>
 
-      <form onSubmit={submitUser} className='Login__form'>
-        <input
-          type='text'
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
-        />
-        <button type='submit'>Sign In</button>
-      </form>
-    </div>
+        <form onSubmit={submitUser} className='Login__form'>
+          <div className='form-field'>
+            <label className='form-label'>
+              Login
+            </label>
+            <input
+              className='form-input'
+              type='text'
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
+            />
+          </div>
+
+          <button className='btn btn--primary Login__submit' type='submit'>Sign In</button>
+        </form>
+      </div>
+    </section>
   );
 };
 

@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import { UserMessage } from '../../../models/Message';
 
+import './Message.scss';
+
 interface IProps {
   children?: ReactNode;
   message: UserMessage;

@@ -15,10 +15,8 @@ const TheRouter: React.FC = () => {
 
   return (
     <Router>
-      <div>
-        <ProtectedRoute path='/' component={Home} isAuthed={isAuthed} />
-        <Route path='/login' component={Login} />
-      </div>
+      <ProtectedRoute path='/' component={Home} isAuthed={isAuthed} />
+      <Route path='/login' component={Login} />
     </Router>
   );
 };

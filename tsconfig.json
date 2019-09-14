@@ -23,7 +23,8 @@
       "models": ["models/*"],
       "utils": ["utils/*"],
       "pages": ["pages/*"],
-      "services": ["services/*"]
+      "services": ["services/*"],
+      "styles": ["styles/*"]
     }
   },
   "include": [

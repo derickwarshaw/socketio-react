@@ -1,0 +1,14 @@
+.InputMessage {
+  display: flex;
+  flex-direction: column;
+
+
+  &__input {
+    margin-bottom: 8px;
+  }
+
+
+  &__submit {
+    width: 80px;
+  }
+}

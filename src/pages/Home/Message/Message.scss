@@ -1,0 +1,10 @@
+@import '../../../styles/vars';
+
+
+.Message {
+  &__user {
+    font-weight: bold;
+    color: $primary;
+    margin-right: 8px;
+  }
+}

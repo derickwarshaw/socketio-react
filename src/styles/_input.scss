@@ -1,0 +1,22 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+
+.form-input {
+  border: 1px solid $grey;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+
+.form-label {
+  margin-bottom: 8px;
+  font-size: 14px;
+}

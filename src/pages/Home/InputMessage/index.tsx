@@ -1,6 +1,8 @@
 import React, { FormEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import './InputMessage.scss';
+
 import StateSocketSergice from 'services/StateSocketSergice';
 import { UserMessage, MessageType } from 'models/Message';
 import { IRootState } from 'state/store';
@@ -38,10 +40,10 @@ const InputMessage: React.FC = () => {
         onChange={(e) => setMessage(e.target.value)}
         type='text'
         placeholder='Input your message'
-        className='InputMessage__input'
+        className='InputMessage__input form-input'
       />
 
-      <button className='InputMessage__button' type='submit'>Send</button>
+      <button className='btn btn--primary InputMessage__submit' type='submit'>Send</button>
     </form>
   );
 };
