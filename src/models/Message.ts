@@ -5,16 +5,16 @@ export enum MessageType {
   system,
 }
 
-interface IMessage {
+interface IBaseMessage {
   type: MessageType;
   body: string;
 }
 
-interface IUserMessage extends IMessage {
+interface IUserMessage extends IBaseMessage {
   user: User;
 }
 
-interface ISystemMessage extends IMessage {
+interface ISystemMessage extends IBaseMessage {
   user: User;
   date: Date;
 }
