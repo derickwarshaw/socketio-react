@@ -12,6 +12,11 @@ const InputMessage: React.FC = () => {
   const { user } = useSelector((state: IRootState) => state.userReducer);
   const [message, setMessage] = useState('');
 
+  /**
+   * Validate and submit user message.
+   * Throw error if data is incorrect.
+   * @param {FormEvent} e Form submit event
+   */
   const handleSendMessage = (e: FormEvent) => {
     e.preventDefault();
 
