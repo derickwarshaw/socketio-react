@@ -1,16 +1,26 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Home from '../pages/Home';
+import ProtectedRoute from './protected-route';
 
-const TheRouter: React.FC = () => (
-  <Router>
-    <div>
-      <Route exact path='/' component={Home} />
-      <Route path='/login' component={Login} />
-    </div>
-  </Router>
-);
+import { IRootState } from 'state/store';
+
+
+const TheRouter: React.FC = () => {
+  const { user } = useSelector((state: IRootState) => state.userReducer);
+  const isAuthed = user ? true : false;
+
+  return (
+    <Router>
+      <div>
+        <ProtectedRoute path='/' component={Home} isAuthed={isAuthed} />
+        <Route path='/login' component={Login} />
+      </div>
+    </Router>
+  );
+};
 
 export default TheRouter;

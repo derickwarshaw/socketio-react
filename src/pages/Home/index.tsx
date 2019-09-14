@@ -5,7 +5,7 @@ import InputMessage from './InputMessage';
 import Message from './Message';
 
 import StateSocketSergice from 'services/StateSocketSergice';
-
+import { IRootState } from 'state/store';
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const Home: React.FC = () => {
     stateSocketService.listenChatMessage();
   }, []);
 
-  const { userMSGs } = useSelector((state: any) => state.messageReducer);
+  const { userMSGs } = useSelector((state: IRootState) => state.messageReducer);
 
   return (
     <section className='Home'>

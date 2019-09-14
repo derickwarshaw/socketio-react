@@ -3,17 +3,22 @@ import { useSelector } from 'react-redux';
 
 import StateSocketSergice from 'services/StateSocketSergice';
 import { UserMessage, MessageType } from 'models/Message';
+import { IRootState } from 'state/store';
 
 const InputMessage: React.FC = () => {
   const [stateSocketService, _] = useState(StateSocketSergice.getInstance());
-  // TODO: add types for reducers
-  const { user } = useSelector((state: any) => state.userReducer);
+  const { user } = useSelector((state: IRootState) => state.userReducer);
   const [message, setMessage] = useState('');
 
   const handleSendMessage = (e: FormEvent) => {
     e.preventDefault();
 
     if (message.trim().length === 0) {
+      return;
+    }
+
+    if (!user) {
+      throw Error('[SUBMITING MESSAGE] User is not defined.');
       return;
     }
 

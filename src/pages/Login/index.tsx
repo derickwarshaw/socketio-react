@@ -39,7 +39,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
     <div className='Login'>
       <h2>Tell your name</h2>
 
-      <form onSubmit={submitUser} className='Login__field'>
+      <form onSubmit={submitUser} className='Login__form'>
         <input
           type='text'
           value={login}

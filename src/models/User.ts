@@ -5,7 +5,7 @@ export interface IUser {
 export class User implements IUser {
   public login: string;
 
-  constructor(login: string) {
+  constructor(login: string = 'Unknown') {
     this.login = login;
   }
 }
