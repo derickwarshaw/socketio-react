@@ -6,6 +6,10 @@ const INIT_STATE: IUserState = {
 };
 
 export default (state: IUserState = INIT_STATE, action: IUserAction) => {
+  if (!action) {
+    return state;
+  }
+
   switch (action.type) {
     case UserActionTypes.CREATE_USER:
       return { ...state, user: action.payload };

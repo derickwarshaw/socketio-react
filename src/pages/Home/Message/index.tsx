@@ -18,7 +18,6 @@ const Message: React.FC<IMessageProps> = ({ message }) => {
         <span data-test='userName' className='Message__user'>Unknown user:</span>
       }
 
-
       <span data-test='body' className='Message__body'>{message.body}</span>
     </div>
   );
